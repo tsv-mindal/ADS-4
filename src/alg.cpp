@@ -1,5 +1,6 @@
+// Copyright 2021 NNTU-CS
 template<typename T>
-class TPQueue {
+class TPQueue  {
   private:
   T* arr;
   int size;
@@ -17,9 +18,8 @@ class TPQueue {
       r -= size + 1;
     return r;
   }
-  
   public:
-  TPQueue():
+  TPQueue( ):
   size(100),
   begin(0), end(0), count(0) {
     arr = new T[size + 1];
@@ -27,7 +27,6 @@ class TPQueue {
   ~TPQueue() {
     delete[] arr;
   }
-  
   void push(const T& item) {
     assert(count < size);
     if (isEmpty()) {
@@ -48,7 +47,6 @@ class TPQueue {
     end = stepForward(end);
     count++;
   }
-  
   T pop() {
     assert(count > 0);
     T item = arr[begin];
@@ -56,21 +54,17 @@ class TPQueue {
     begin = stepForward(begin);
     return item;
   }
-  
   T get() const {
     assert(count > 0);
     return arr[begin];
-  }
-  
+  } 
   bool isEmpty() const {
     return count == 0;
   }
-  
   bool isFull() const {
     return count == size;
   }
 };
-
 struct SYM {
   char ch;
   int  prior;
